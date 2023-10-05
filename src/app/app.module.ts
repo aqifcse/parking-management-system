@@ -16,6 +16,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatListModule } from '@angular/material/list';
 import {MatCardModule} from '@angular/material/card';
 
+import { HighchartsChartModule } from 'highcharts-angular';
+
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -41,7 +43,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatListModule,
     AppRoutingModule,
     HttpClientModule,
-    MatCardModule
+    MatCardModule,
+    HighchartsChartModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,15 @@
 <div class="container">
     <div class="row mt-4">
-        Hello Dashboard
+        <mat-card style="height: 400px; width: 100%; background-color: white;">
+            <div class="chart-container">
+                <highcharts-chart [Highcharts]="PieHighcharts" [options]="PieChartOptions"></highcharts-chart>
+            </div>
+        </mat-card>
+
+        <mat-card style="height: 300px; width: 100%; background-color: white;" class="mt-4">
+            <div class="chart-container">
+                <highcharts-chart [Highcharts]="LineHighcharts" [options]="chartOptionsLine"></highcharts-chart>
+            </div>
+        </mat-card>
     </div>
 </div>

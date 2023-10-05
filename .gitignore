@@ -13,6 +13,7 @@ firebase-debug.*.log*
 #Angular cache
 .angular/
 .angular/cache/
+node_modules/
 
 # Firebase config
 

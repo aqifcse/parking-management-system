@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { DataSource } from '@angular/cdk/collections';
+import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
@@ -6,35 +7,35 @@ import { MatTableDataSource } from '@angular/material/table';
   templateUrl: './parking-list.component.html',
   styleUrls: ['./parking-list.component.css']
 })
-export class ParkingListComponent {
+export class ParkingListComponent implements OnInit{
 
-  parkingRecord: any = new MatTableDataSource([
-    {
-      "vehicle_owner_name": "Towfiq",
-      "vehicle_type": 1,
-      "vehicle_license_number": 123456,
-      "car_entry_date_time": "2010-08-17T12:09:36",
-      "car_exit_date_time": "2010-08-17T12:09:36",
-      "status": 1
-    },
-    {
-      "vehicle_owner_name": "Towfiq",
-      "vehicle_type": 1,
-      "vehicle_license_number": 123456,
-      "car_entry_date_time": "2010-08-17T12:09:36",
-      "car_exit_date_time": "2010-08-17T12:09:36",
-      "status": 1
-    },
-    {
-      "vehicle_owner_name": "Towfiq",
-      "vehicle_type": 1,
-      "vehicle_license_number": 123456,
-      "car_entry_date_time": "2010-08-17T12:09:36",
-      "car_exit_date_time": "2010-08-17T12:09:36",
-      "status": 1
-    }
-  ])
+  parkingRecord: any = []
+  dataSource: any;
 
-  displayedColumns = ["vehicle_owner_name",  "vehicle_type", "vehicle_license_number", "car_entry_date_time", "car_exit_date_time", "status"]
+  displayedColumns: any[] = ['vehicle_owner_name',  'vehicle_type', 'vehicle_license_number', 'car_entry_date_time', 'car_exit_date_time', 'status', 'edit']
 
+  ngOnInit(): void {
+
+    console.log(localStorage.getItem('jsonData'))
+    
+    this.showParkingRecordList();
+  }
+
+  showParkingRecordList(){
+
+    const data = JSON.parse(localStorage.getItem('jsonData') || '{}');
+  
+    this.parkingRecord.push(data);
+
+    
+    // console.log(this.parkingRecord);
+
+    this.dataSource = new MatTableDataSource(this.parkingRecord) 
+
+    console.log(this.dataSource)
+
+    
+
+
+  }
 }

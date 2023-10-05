@@ -45,16 +45,26 @@
                     </mat-form-field>
 
                     <mat-form-field>
-                        <input matInput [matDatepicker]="picker1" [(ngModel)]="carEntryDateTime" [ngModelOptions]="{ standalone: true }">
-                        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-                        <mat-datepicker #picker1></mat-datepicker>
-                    </mat-form-field>
+                        <input matInput [ngxMatDatetimePicker]="picker" placeholder="Choose a date" [formControl]="dateControl"
+                           [min]="minDate" [max]="maxDate" [disabled]="disabled">
+                        <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
+                        <ngx-mat-datetime-picker #picker [showSpinners]="showSpinners" [showSeconds]="showSeconds"
+                           [stepHour]="stepHour" [stepMinute]="stepMinute" [stepSecond]="stepSecond"
+                           [touchUi]="touchUi" [color]="color" [enableMeridian]="enableMeridian" 
+                           [disableMinute]="disableMinute" [hideTime]="hideTime">
+                        </ngx-mat-datetime-picker>
+                     </mat-form-field>
 
-                    <mat-form-field>
-                        <input matInput [matDatepicker]="picker" [(ngModel)]="carExitDateTime" [ngModelOptions]="{ standalone: true }">
-                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                        <mat-datepicker #picker></mat-datepicker>
-                    </mat-form-field>
+                     <mat-form-field>
+                        <input matInput [ngxMatDatetimePicker]="picker" placeholder="Choose a date" [formControl]="dateControl"
+                           [min]="minDate" [max]="maxDate" [disabled]="disabled">
+                        <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
+                        <ngx-mat-datetime-picker #picker [showSpinners]="showSpinners" [showSeconds]="showSeconds"
+                           [stepHour]="stepHour" [stepMinute]="stepMinute" [stepSecond]="stepSecond"
+                           [touchUi]="touchUi" [color]="color" [enableMeridian]="enableMeridian" 
+                           [disableMinute]="disableMinute" [hideTime]="hideTime">
+                        </ngx-mat-datetime-picker>
+                     </mat-form-field>
 
                     <mat-form-field>
                         <mat-label>Parking Charge</mat-label>

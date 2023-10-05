@@ -1,5 +1,7 @@
 import { DatePipe } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { ThemePalette } from '@angular/material/core';
 
 @Component({
   selector: 'app-parking-form',
@@ -23,6 +25,36 @@ export class ParkingFormComponent {
   pickerEntry: any;
   pickerExit: any;
 
+  @ViewChild('picker', { static: true }) picker: any;
+
+  public disabled = false;
+  public showSpinners = true;
+  public showSeconds = false;
+  public touchUi = false;
+  public enableMeridian = false;
+  public minDate!: Date;
+  public maxDate!: Date;
+  public stepHour = 1;
+  public stepMinute = 1;
+  public stepSecond = 1;
+  public color: ThemePalette = 'primary';
+  public disableMinute = false;
+  public hideTime = false;
+
+  public dateControl = new FormControl(new Date());
+
+  public options = [
+    { value: true, label: 'True' },
+    { value: false, label: 'False' }
+  ];
+
+  public listColors = ['primary', 'accent', 'warn'];
+
+  public stepHours = [1, 2, 3, 4, 5];
+  public stepMinutes = [1, 5, 10, 15, 20, 25];
+  public stepSeconds = [1, 5, 10, 15, 20, 25];
+
+
 
 
 
@@ -30,8 +62,8 @@ export class ParkingFormComponent {
 
     let datePipe = new DatePipe('en-US')
 
-    this.carEntryDateTime = datePipe.transform(this.carEntryDateTime, "DD-MM-YYYY:hh:mm:ss");
-    this.carExitDateTime = datePipe.transform(this.carExitDateTime, "DD-MM-YYYY:hh:mm:ss");
+    this.carEntryDateTime = datePipe.transform(this.carEntryDateTime, "dd-MM-17T12:09:36Z");
+    this.carExitDateTime = datePipe.transform(this.carExitDateTime, "2010-08-17T12:09:36Z");
 
     this.formData = {
       "vehicle_license_number": this.vehicleLicenseNumber,

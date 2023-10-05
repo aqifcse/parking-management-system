@@ -1,0 +1,11 @@
+{
+    "vehicle_license_number": 123456,
+    "vehicle_type": 1,
+    "vehicle_owner_name": "Towfiq",
+    "vehicle_owner_phone": "+8801682604981",
+    "status": 1,
+    "car_owner_Address": "Road 1, Avenue: 5, Mirpur",
+    "car_entry_date_time": "2010-08-17T12:09:36",
+    "car_exit_date_time": "2010-08-17T12:09:36",
+    "parking_charge": 127.50
+}

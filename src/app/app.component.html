@@ -1,0 +1,35 @@
+<mat-toolbar class="d-flex nav-toolbar justify-content-between mat-elevation-z2">
+  
+  <div class="d-flex align-items-center">
+
+    <div class="pe-4 ps-4" style="border-right: 1px dotted black;">
+      <span style="letter-spacing: 3px; font-weight: 300;">
+        PARKING MANAGEMENT SYSTEM
+      </span>
+    </div>
+  
+    <div class="ps-4 d-flex align-items-center">
+      <!-- dashboard -->
+      <div class="ms-1 me-1">
+        <button class="d-flex align-items-center" mat-flat-button [routerLink]="'./'" routerLinkActive="mat-elevation-z1">
+          <mat-icon>home</mat-icon>
+          Dashboard
+        </button>
+      </div>
+      <div class="ms-1 me-1">
+        <button mat-flat-button [routerLink]="'./parking-form'">
+          <mat-icon>note</mat-icon>
+          Parking Form
+        </button>
+      </div>
+      <div class="ms-1 me-1">
+        <button mat-flat-button [routerLink]="'./parking-list'">
+          <mat-icon>list</mat-icon>
+          Parking List
+        </button>
+      </div>
+    </div>
+  </div>
+</mat-toolbar>
+
+<router-outlet></router-outlet>

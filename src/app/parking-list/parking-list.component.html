@@ -1,8 +1,54 @@
 <div class="container">
     <div class="row mt-4">
-        <mat-card style="height: 400px; width: 100%; background-color: whitesmoke;">
-            Hello!!!!
+        <mat-card>
+            <table [dataSource]="parkingRecord" mat-table>
+                <ng-container matColumnDef="vehicle_owner_name">
+                    <th *matHeaderCellDef mat-header-cell>
+                        Owner Name
+                    </th>
+                    <td *matCellDef="let element" mat-cell>
+                        
+                        {{element.vehicle_owner_name}}
+                        
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="vehicle_type">
+                    <th *matHeaderCellDef mat-header-cell>
+                        Vehicle Type
+                    </th>
+                    <td *matCellDef="let element" mat-cell>
+                        
+                        {{element.vehicle_type}}
+                        
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="vehicle_license_number">
+                    <th *matHeaderCellDef mat-header-cell>
+                       Vehicle License Number
+                    </th>
+                    <td *matCellDef="let element" mat-cell>
+                        {{ element.updated_at | date: 'dd MMM, yyyy' }}
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="car_entry_time">
+                    <th *matHeaderCellDef mat-header-cell>
+                        Edit
+                    </th>
+                    <td *matCellDef="let element" mat-cell>
+                        <div class="action-buttons">
+                            <mat-icon  class="action-buttons"
+                                matTooltip="Edit Crop Details">
+                                edit_note
+                            </mat-icon>
+                        </div>
+                    </td>
+                </ng-container>
+                <tbody>
+                    <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+                    <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+                </tbody>
+            </table>
         </mat-card>
+        
     </div>
 </div>
-

@@ -15,11 +15,22 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatListModule } from '@angular/material/list';
 import {MatCardModule} from '@angular/material/card';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+
+import { MatTableModule } from '@angular/material/table';
+
 
 import { HighchartsChartModule } from 'highcharts-angular';
 
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { CommonModule, DatePipe } from '@angular/common'
+
+
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -45,8 +56,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     MatCardModule,
     HighchartsChartModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    DatePipe,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatTableModule
+    
   ],
-  providers: [],
+  providers: [MatNativeDateModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

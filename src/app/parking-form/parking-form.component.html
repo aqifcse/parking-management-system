@@ -1,6 +1,70 @@
 <div class="container">
     <div class="row mt-4">
-        Hello Form!!
+        <mat-card style="background-color: white; border-radius: 10px">
+            <form>
+                <div class="d-flex flex-column">
+                    <mat-form-field>
+                        <mat-label>Vehicle License Number</mat-label>
+                        <input matInput type="text" [(ngModel)]="vehicleLicenseNumber" name="vehicle_license_number" [ngModelOptions]="{ standalone: true }">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Vehicle Type</mat-label>
+                        <mat-select [(ngModel)]="selectedVehicleType" name="vehicle_type">
+                            <mat-option [value]="1">
+                                Microbus
+                            </mat-option>
+                            <mat-option [value]="2">
+                                Car
+                            </mat-option>
+                            <mat-option [value]="3">
+                                Truck
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-label>Vehicle Owner Name</mat-label>
+                        <input matInput type="text" [(ngModel)]="vehicleOwnerName" name="vehicle_owner_name" [ngModelOptions]="{ standalone: true }">
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-label>Vehicle Owner Phone</mat-label>
+                        <input matInput  type="text" [(ngModel)]="vehicleOwnerPhone" name="vehicle_owner_phone" [ngModelOptions]="{ standalone: true }">
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-label>Status</mat-label>
+                        <mat-select [(ngModel)]="status" name="status">
+                            <mat-option [value]="1">
+                                In
+                            </mat-option>
+                            <mat-option [value]="0">
+                                out
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <input matInput [matDatepicker]="picker1" [(ngModel)]="carEntryDateTime" [ngModelOptions]="{ standalone: true }">
+                        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                        <mat-datepicker #picker1></mat-datepicker>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <input matInput [matDatepicker]="picker" [(ngModel)]="carExitDateTime" [ngModelOptions]="{ standalone: true }">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-label>Parking Charge</mat-label>
+                        <input matInput  type="number" [(ngModel)]="parkingCharge" name="parkingCharge" [ngModelOptions]="{ standalone: true }">
+                    </mat-form-field>
+
+
+                    <button mat-raised-button (click)="saveToJson()">Save</button>
+                </div>
+            </form>
+        </mat-card>
     </div>
 </div>
-

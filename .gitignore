@@ -13,7 +13,6 @@ firebase-debug.*.log*
 #Angular cache
 .angular/
 .angular/cache/
-node_modules/
 
 # Firebase config
 
@@ -69,3 +68,6 @@ node_modules/
 
 # dotenv environment variables file
 .env
+
+# dist
+dist/

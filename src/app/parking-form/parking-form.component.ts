@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
 import { Router, RouterModule } from '@angular/router';
 
@@ -19,8 +19,8 @@ export class ParkingFormComponent {
   vehicleOwnerPhone: string = '';
   status: number = 1;
   carOwnerAddress: string = '';
-  carEntryDateTime: any;
-  carExitDateTime: any;
+  carEntryDateTime = new FormControl(new Date());
+  carExitDateTime = new FormControl(new Date());
   parkingCharge: number = 0.0;
 
   pickerEntry: any;
@@ -43,8 +43,6 @@ export class ParkingFormComponent {
   public disableMinute = false;
   public hideTime = false;
 
-  public dateControl = new FormControl(new Date());
-
   public options = [
     { value: true, label: 'True' },
     { value: false, label: 'False' }
@@ -58,14 +56,14 @@ export class ParkingFormComponent {
 
 
 
-
+  constructor(private router: Router) {}
 
   saveToJson() {
 
     let datePipe = new DatePipe('en-US')
 
-    this.carEntryDateTime = datePipe.transform(this.carEntryDateTime, "dd-MM-17T12:09:36Z");
-    this.carExitDateTime = datePipe.transform(this.carExitDateTime, "2010-08-17T12:09:36Z");
+    console.log(this.carEntryDateTime)
+
 
     this.formData = {
       "vehicle_license_number": this.vehicleLicenseNumber,
@@ -74,8 +72,8 @@ export class ParkingFormComponent {
       "vehicle_owner_phone": this.vehicleOwnerPhone,
       "status": this.status,
       "car_owner_Address": this.carOwnerAddress,
-      "car_entry_date_time": this.carEntryDateTime,
-      "car_exit_date_time": this.carExitDateTime,
+      "car_entry_date_time": this.carEntryDateTime.value,
+      "car_exit_date_time": this.carExitDateTime.value,
       "parking_charge": this.parkingCharge
     }
     // Convert formData to JSON string
@@ -83,6 +81,10 @@ export class ParkingFormComponent {
     
     // Save to local storage
     localStorage.setItem('jsonData', jsonStr);
+
+    this.router.navigate(['/parking-list']);
+
+
 
     
   }

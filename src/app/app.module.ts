@@ -90,11 +90,11 @@ const CUSTOM_DATE_FORMATS: NgxMatDateFormats = {
     
   ],
   providers: [
-    {
-      provide: NgxMatDateAdapter,
-      useClass: NgxMatMomentAdapter,
-      deps: [MAT_DATE_LOCALE, NGX_MAT_MOMENT_DATE_ADAPTER_OPTIONS, NGX_MAT_DATE_FORMATS]
-    },
+    // {
+    //   provide: NgxMatDateAdapter,
+    //   useClass: NgxMatMomentAdapter,
+    //   deps: [MAT_DATE_LOCALE, NGX_MAT_MOMENT_DATE_ADAPTER_OPTIONS, NGX_MAT_DATE_FORMATS]
+    // },
     { provide: MAT_DATE_FORMATS, useValue: NGX_MAT_DATE_FORMATS }
   ],
   bootstrap: [AppComponent]

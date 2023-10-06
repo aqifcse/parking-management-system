@@ -2,6 +2,7 @@ import { DatePipe } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-parking-form',
@@ -25,7 +26,8 @@ export class ParkingFormComponent {
   pickerEntry: any;
   pickerExit: any;
 
-  @ViewChild('picker', { static: true }) picker: any;
+  @ViewChild('picker1', { static: true }) picker1: any;
+  @ViewChild('picker2', { static: true }) picker2: any;
 
   public disabled = false;
   public showSpinners = true;
@@ -81,5 +83,7 @@ export class ParkingFormComponent {
     
     // Save to local storage
     localStorage.setItem('jsonData', jsonStr);
+
+    
   }
 }

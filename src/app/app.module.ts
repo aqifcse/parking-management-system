@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Injectable, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -19,9 +19,11 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 
 import { MatTableModule } from '@angular/material/table';
-import { NGX_MAT_DATE_FORMATS, NgxMatDatetimePickerModule, NgxMatTimepickerModule, NgxNativeDateModule } from '@angular-material-components/datetime-picker';
 
-import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { NGX_MAT_DATE_FORMATS, NgxMatDateAdapter, NgxMatDateFormats, NgxMatDatetimePickerModule, NgxMatNativeDateModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
+import {MAT_DATE_FORMATS, MatNativeDateModule} from '@angular/material/core';
+
+
 import { HighchartsChartModule } from 'highcharts-angular';
 
 import { MatInputModule } from '@angular/material/input';
@@ -29,8 +31,20 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { CommonModule, DatePipe } from '@angular/common'
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { NGX_MAT_MOMENT_DATE_ADAPTER_OPTIONS, NgxMatMomentAdapter } from '@angular-material-components/moment-adapter';
 
-import {MAT_DATE_FORMATS, MatNativeDateModule} from '@angular/material/core';
+const CUSTOM_DATE_FORMATS: NgxMatDateFormats = {
+  parse: {
+    dateInput: "l, LTS"
+  },
+  display: {
+    dateInput: "l, LTS",
+    monthYearLabel: "MMM YYYY",
+    dateA11yLabel: "LL",
+    monthYearA11yLabel: "MMMM YYYY"
+  }
+};
 
 
 @NgModule({
@@ -63,18 +77,25 @@ import {MAT_DATE_FORMATS, MatNativeDateModule} from '@angular/material/core';
     DatePipe,
     MatDatepickerModule,
     MatTableModule,
-    NgxMatDatetimePickerModule, 
-    NgxMatTimepickerModule,
-    NgxNativeDateModule,
-    MatNativeDateModule,
     MatDatepickerModule,
-    MatMomentDateModule
+    MatInputModule,
+    NgxMatTimepickerModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    NgxMatDatetimePickerModule,
+    MatNativeDateModule,
+    NgxMatNativeDateModule,
+    NgxMatNativeDateModule
     
   ],
   providers: [
-    MatDatepickerModule,
-    { provide: MAT_DATE_FORMATS, useValue: NGX_MAT_DATE_FORMATS },
-  
+    {
+      provide: NgxMatDateAdapter,
+      useClass: NgxMatMomentAdapter,
+      deps: [MAT_DATE_LOCALE, NGX_MAT_MOMENT_DATE_ADAPTER_OPTIONS, NGX_MAT_DATE_FORMATS]
+    },
+    { provide: MAT_DATE_FORMATS, useValue: NGX_MAT_DATE_FORMATS }
   ],
   bootstrap: [AppComponent]
 })
